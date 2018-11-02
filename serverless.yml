@@ -1,0 +1,17 @@
+service:
+  name: cvs-svc-template
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  template:
+    handler: handler.handler
+    events:
+      - http:
+          method: get
+          path: template
