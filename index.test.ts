@@ -6,16 +6,14 @@ import Version from './local/data/version.json';
 describe('Application entry', () => {
   let event;
   let context;
-  let MAJOR_MOCK: jest.SpyInstance<string, [num: string]>;
-  let majorVersionNumber: number;
+  let majorVersionNumber: string;
   let basePath: string;
 
   beforeEach(() => {
     event = {} as APIGatewayEvent;
     context = {} as Context;
-    MAJOR_MOCK = jest.spyOn(Utils, 'createMajorVersionNumber').mockReturnValue('1');
-    majorVersionNumber = MAJOR_MOCK() as number;
-    basePath = Utils.createHandlerBasePath(MAJOR_MOCK());
+    majorVersionNumber = Utils.createMajorVersionNumber('1');
+    basePath = Utils.createHandlerBasePath(majorVersionNumber);
   });
 
   afterEach(() => {
