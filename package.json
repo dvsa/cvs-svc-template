@@ -25,6 +25,7 @@
     "test:integration:watch": "echo 'integration tests --watch to be added'",
     "test:integration:coverage": "cross-env COVERAGE=true echo 'integration tests coverage to be added'",
     "test": "npm-run-all lint test:unit:coverage test:integration:coverage",
+    "jest": "jest",
     "mock-server": "jsonsls run ./data/db.json",
     "audit": "npm audit",
     "lint:analyse": "eslint . --ext js,ts --fix",

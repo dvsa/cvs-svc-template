@@ -3,24 +3,18 @@ import { app } from '.';
 
 // TODO Define Mock strategy
 describe('API', () => {
-  let request: supertest.SuperTest<supertest.Test>;
-  beforeEach(() => {
-    request = supertest(app);
-  });
-
   afterEach(() => {
     jest.resetAllMocks().restoreAllMocks();
   });
 
   describe('GET', () => {
-    test("should return '{ok: true}' when hitting '/' route", async (done) => {
-      await request
-        .get('/')
-        .expect(200)
-        .expect(({ ok }) => {
-          expect(ok).toBe(true);
-        })
-        .end(done);
+    test("should return '{ok: true}' when hitting '/' route", async () => {
+      const result = await supertest(app).get('/');
+      const resultContent = JSON.parse(result.text) as { ok: boolean };
+
+      expect(result.status).toEqual(200);
+      expect(resultContent).toHaveProperty('ok');
+      expect(resultContent.ok).toEqual(true);
     });
   });
 });

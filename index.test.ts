@@ -12,7 +12,8 @@ describe('Application entry', () => {
   beforeEach(() => {
     event = {} as APIGatewayEvent;
     context = {} as Context;
-    majorVersionNumber = Utils.createMajorVersionNumber('1');
+    jest.spyOn(Utils, 'createMajorVersionNumber').mockReturnValue('1');
+    majorVersionNumber = Utils.createMajorVersionNumber('1.0.0');
     basePath = Utils.createHandlerBasePath(majorVersionNumber);
   });
 
