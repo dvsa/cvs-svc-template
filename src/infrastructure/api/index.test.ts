@@ -1,9 +1,9 @@
 import supertest from 'supertest';
-import { app } from './';
+import { app } from '.';
 
 // TODO Define Mock strategy
 describe('API', () => {
-  let request;
+  let request: supertest.SuperTest<supertest.Test>;
   beforeEach(() => {
     request = supertest(app);
   });
@@ -13,8 +13,8 @@ describe('API', () => {
   });
 
   describe('GET', () => {
-    test(`should return '{ok: true}' when hitting '/' route`, (done) => {
-      request
+    test("should return '{ok: true}' when hitting '/' route", async (done) => {
+      await request
         .get('/')
         .expect(200)
         .expect(({ ok }) => {

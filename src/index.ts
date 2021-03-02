@@ -16,7 +16,7 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
   console.log('event');
   console.log(JSON.stringify(event, null, 2));
 
-  return await serverless(app, {
+  return serverless(app, {
     /**
      * We proxy requests from / as <stage> is handled in APIG when we deploy.
      * With with serverless-offline we proxy requests from /v<x> from the client -

@@ -30,7 +30,7 @@
     "lint:analyse": "eslint . --ext js,ts --fix",
     "lint:report": "npm run lint:analyse -- -f json -o reports/eslint/eslint-report.json",
     "lint": "npm-run-all lint:*",
-    "prettier": "prettier --write './**/*.{js,ts}'",
+    "prettier": "prettier --write ./**/*.{js,ts}",
     "security-checks": "git secrets --scan && git log -p | scanrepo",
     "clean": "rimraf ./.build ./.artifact ./.serverless ./.webpack ./*.zip",
     "compile": "tsc",
@@ -48,6 +48,7 @@
     "dependencies:check": "ncu"
   },
   "dependencies": {
+    "aws-lambda": "1.0.6",
     "express": "4.17.1",
     "serverless-http": "2.6.0",
     "source-map-support": "0.5.19"
@@ -55,6 +56,7 @@
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "@dvsa/eslint-config-ts": "2.0.0",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.2.0",
@@ -63,6 +65,7 @@
     "@types/aws-lambda": "8.10.70",
     "@types/jest": "26.0.20",
     "@types/node": "14.14.20",
+    "@types/supertest": "2.0.10",
     "@typescript-eslint/eslint-plugin": "4.12.0",
     "@typescript-eslint/parser": "4.12.0",
     "clean-webpack-plugin": "3.0.0",
