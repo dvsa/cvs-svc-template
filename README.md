@@ -40,8 +40,6 @@ NODE_ENV=local serverless offline
 Further details about environment setup can be found in the provided documentation and `env.example` file.
 
 All secrets the secrets are will stored in `AWS Secrets Manager`.
-</br>
-</br>
 
 ### Scripts
 
@@ -51,21 +49,15 @@ The following scripts are available, for further information please refer to the
 - <b>dev</b>: `npm run dev` - _run in parallel the service and unit tests in_ `--watch` _mode with live reload_.
 - <b>test</b>: `npm t` - _execute the unit test suite_
 - <b>build</b>: `npm run build` - _bundle the project for production_
-  </br>
-  </br>
 
 ### Offline
 
-Serverless-offline with webpack is used to run the project locally. Please use `npm run dev` script to do so.
-</br>
-</br>
+Serverless-offline with webpack is used to run the project locally. Please use `npm run dev` script to do so. Go to `http://localhost:3001/local/version` to confirm that everything has loaded correctly, you should see that the version is the same as the version in the `package.json`
 
 ### Lambda locally
 
 Serverless can invoke lambda functions locally which provide a close experience to the real service if you decide not use the offline mode. `events` and `paths` can be found under `/local` folder.
 For further details using lambda locally please refer to the [serverless documentation](https://www.serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/).
-</br>
-</br>
 
 ### Debugging
 
@@ -79,61 +71,40 @@ For further information about debugging, please refer to the following documenta
 
 - [Debug process section](https://www.serverless.com/plugins/serverless-offline#usage-with-webpack)
 
-</br>
-</br>
-</br>
-
 ## Testing
 
 [json-serverless](https://github.com/pharindoko/json-serverless) has been added to the repository should we wish to mock external services during development and can be used in conjunction with the `test` environment.
-</br>
-</br>
 
 ### Unit
 
 Jest is used for unit testing.
 Please refer to the [Jest documentation](https://jestjs.io/docs/en/getting-started) for further details.
-</br>
-</br>
 
 ### Integration
 
 To be added and customised depending on needs, supertest is used but we could be looking at other packages such as nock, ts-mockito, typemoq, wiremock, etc.. or testing (pactjs, hoverfly, mockserver, etc..)
-</br>
-</br>
-</br>
 
 ## Infrastructure
 
 <Insert Design>
-</br>
-</br>
 
 ### Release
 
 Releases (tag, release notes, changelog, github release, assets) are automatically managed by [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and when pushing (or merging) to `master` branch which is protected. [semver](https://semver.org/) convention is followed.
-<br>
-Please be familiar with conventional commit as described in the Contributing section below.
-<br>
-Default preset used is angular for conventional commits, please see the [angular conventions](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum).
-<br>
-The `<type>` `'breaking'` in the commit message will trigger a major version bump as well as any of the following text contained in the commit body: `"BREAKING CHANGE", "BREAKING CHANGES", "BREAKING_CHANGES", "BREAKING", "BREAKING_CHANGE"`. Please refer to the `.releaserc.json` file for the full configuration.
-<br>
-The script `npm run release` will automatically trigger the release in CI. To manually test the release the following flags -`--dry-run --no-ci` - can be passed to the release script.
-<br>
-<br>
-Publishing and artifacts are managed separately by the pipeline.
 
-</br>
-</br>
-</br>
+Please be familiar with conventional commit as described in the Contributing section below.
+
+Default preset used is angular for conventional commits, please see the [angular conventions](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum).
+
+The `<type>` `'breaking'` in the commit message will trigger a major version bump as well as any of the following text contained in the commit body: `"BREAKING CHANGE", "BREAKING CHANGES", "BREAKING_CHANGES", "BREAKING", "BREAKING_CHANGE"`. Please refer to the `.releaserc.json` file for the full configuration.
+
+The script `npm run release` will automatically trigger the release in CI. To manually test the release the following flags -`--dry-run --no-ci` - can be passed to the release script.
+
+Publishing and artifacts are managed separately by the pipeline.
 
 ## Contributing
 
 To facilitate the standardisation of the code, a few helpers and tools have been adopted for this repository.
-
-</br>
-</br>
 
 ### External dependencies
 
@@ -157,13 +128,7 @@ type(scope?): subject
 
 ```
 
-</br>
-</br>
-
 ### Code standards
-
-</br>
-</br>
 
 #### Code structure
 
@@ -174,8 +139,6 @@ Domain Drive Design diagram with Interfaces, Application, Domain layers and Infr
 </p>
 
 Further reading: [E. Evans in its Domain Driven Design approach](http://dddsample.sourceforge.net/architecture.html) and [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
-</br>
-</br>
 
 #### Toolings
 
