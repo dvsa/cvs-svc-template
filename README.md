@@ -138,8 +138,6 @@ Domain Drive Design diagram with Interfaces, Application, Domain layers and Infr
   <img src="./docs/DDD_architecture.jpg" alt="Domain Drive Design diagram with Interfaces, Application, Domain layers and Infrastructure across the layers" >
 </p>
 
-Further reading: [E. Evans in its Domain Driven Design approach](http://dddsample.sourceforge.net/architecture.html) and [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
-
 #### Toolings
 
 The code uses [eslint](https://eslint.org/docs/user-guide/getting-started), [typescript clean code standards](https://github.com/labs42io/clean-code-typescript) as well as sonarqube for static analysis.
