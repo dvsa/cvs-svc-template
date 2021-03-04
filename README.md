@@ -115,7 +115,7 @@ You will be required to install [git-secrets](https://github.com/awslabs/git-sec
 We follow the [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/) when we commit code to the repository and follow the [angular convention](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum).
 
 The type is mandatory and must be all lowercase.
-The scope of your commit remain is also mandator, it must include your ticket number and be all lowercase.
+The scope of your commit remain is also mandatory, it must include your ticket number and be all lowercase. The format for the ticket number can be set in the commitlint.config.js file.
 
 ```js
 // Please see /commitlint.config.js for customised format
