@@ -1,4 +1,4 @@
-import { createMajorVersionNumber, createHandlerBasePath } from '.';
+import { createMajorVersionNumber, createHandlerBasePath } from '../../../src/utils';
 
 describe("'Utils' file", () => {
   let SEMVER_VERSION_NUMBER;

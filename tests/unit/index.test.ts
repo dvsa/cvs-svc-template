@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context } from 'aws-lambda';
-import { handler } from './src';
-import * as Utils from './src/utils';
-import Version from './local/data/version.json';
+import { handler } from '../../src';
+import * as Utils from '../../src/utils';
+import Version from '../../local/data/version.json';
 
 describe('Application entry', () => {
   let event;
