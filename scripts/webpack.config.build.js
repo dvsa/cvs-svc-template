@@ -24,21 +24,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    // extensions: ['.tsx', '.ts', '.js'],
-    // extensions: ['.tsx', '.ts', '.js'],
-    // extensions: ['.tsx', '.ts', '.js'],
-    // extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     libraryTarget: 'commonjs',
     filename: 'handler.js',
     path: path.resolve(__dirname, '..', '.build'),
   },
-  externals: [
-    // nodeExternals({
-    //   // avoid bundling express stuff
-    //   view: path.resolve(__dirname, '..', 'node_modules/express/lib/view.js'),
-    // }),
-  ],
+  externals: [],
   plugins: [new CleanWebpackPlugin()],
 };
