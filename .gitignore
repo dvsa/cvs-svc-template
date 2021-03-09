@@ -1,17 +1,45 @@
-# OS generated files #
-######################
+# MacOS specific hidden files
 .DS_Store
-.DS_Store?
+.AppleDouble
+.LSOverride
+Icon
 ._*
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
-ehthumbs.db
-# Ignore from project
-node_modules/**
-.build/**
-.artifacts/**
-npm-debug.log
-.serverless/**
-.vscode/**
-/**/*.tar
-/**/*.zip
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+.serverless
+.build
+.artifact
+*.zip
+
+# env files
+*.env*
+
+# Coverage reports
+coverage
+reports
+.scannerwork
+
+# Source maps
+*.map
+
+.vscode/
