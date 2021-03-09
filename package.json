@@ -42,10 +42,12 @@
     "package:create": "cross-env API_VERSION=${npm_package_version} NODE_ENV=local sls package --package .build",
     "package:prepare": "mv ./.build/app.zip ./.build/build.zip",
     "package:move": "mv ./.build/build.zip ./build.zip",
-    "package": "npm-run-all clean package:*",
+    "package-new": "npm-run-all clean package:*",
+    "package": "mkdir ${ZIP_NAME} && cp package.json package-lock.json ${ZIP_NAME}/ && cp -r .build/src/* ${ZIP_NAME}/ && cd ${ZIP_NAME} && npm ci --production && rm package.json package-lock.json && zip -qr ../${ZIP_NAME}.zip .",
     "release": "semantic-release",
     "prerelease": "semantic-release --dry-run",
-    "dependencies:check": "ncu"
+    "dependencies:check": "ncu",
+    "tools-setup": "echo 'pipeline requires this'"
   },
   "dependencies": {
     "aws-lambda": "1.0.6",
