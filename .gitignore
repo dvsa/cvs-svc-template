@@ -43,3 +43,5 @@ reports
 *.map
 
 .vscode/
+
+src/dist/
