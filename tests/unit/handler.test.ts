@@ -1,5 +1,5 @@
 import { APIGatewayEvent, Context } from 'aws-lambda';
-import { handler } from '../../src';
+import { handler } from '../../src/handler';
 import * as Utils from '../../src/utils';
 import Version from '../../local/data/version.json';
 

@@ -41,9 +41,8 @@
     "sonar-scanner": "sonar-scanner",
     "package:create": "cross-env API_VERSION=${npm_package_version} NODE_ENV=local sls package --package .build",
     "package:prepare": "mv ./.build/app.zip ./.build/build.zip",
-    "package:move": "mv ./.build/build.zip ./build.zip",
-    "package-new": "npm-run-all clean package:*",
-    "package": "mkdir ${ZIP_NAME} && cp package.json package-lock.json ${ZIP_NAME}/ && cp -r .build/src/* ${ZIP_NAME}/ && cd ${ZIP_NAME} && npm ci --production && rm package.json package-lock.json && zip -qr ../${ZIP_NAME}.zip .",
+    "package:move": "mv ./.build/build.zip ./${ZIP_NAME}.zip",
+    "package": "npm-run-all clean package:*",
     "release": "semantic-release",
     "prerelease": "semantic-release --dry-run",
     "dependencies:check": "ncu",
@@ -51,6 +50,7 @@
   },
   "dependencies": {
     "aws-lambda": "1.0.6",
+    "aws-sdk": "2.857.0",
     "express": "4.17.1",
     "serverless-http": "2.6.0",
     "source-map-support": "0.5.19"

@@ -20,7 +20,7 @@ const { API_VERSION } = process.env;
  * next()
  * })
  */
-app.use((req, __, next) => {
+app.use((req, _response, next) => {
   // TODO Add logger lib like Winston or Morgan
   console.log('path');
   console.log(req.path);
@@ -30,17 +30,17 @@ app.use((req, __, next) => {
 /**
  * Define routing and route level middleware if necessary from ./routes
  */
-router.post('/', (_, res, next) => {
+router.post('/', (_request, res, next) => {
   res.send('Hello World!');
   next();
 });
 
 // Debug router before we start proxying  requests from /v<x> psth
-app.get('/', (_, res) => {
+app.get('/', (_request, res) => {
   res.send({ ok: true });
 });
 
-app.get('/version', (_, res) => {
+app.get('/version', (_request, res) => {
   res.send({ version: API_VERSION });
 });
 

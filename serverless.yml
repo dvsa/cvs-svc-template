@@ -39,7 +39,7 @@ provider:
 functions:
   # Use express routing so we don't rely on APIG and leverage express API
   app:
-    handler: src/index.handler
+    handler: src/handler.handler
     events:
       - http: ANY /
       # We will proxy version from here in the client to match the API specs e.g. (<stage>)/v<x>/template
