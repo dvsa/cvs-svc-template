@@ -11,7 +11,7 @@
     "hooks": {
       "pre-commit": "npm-run-all audit lint prettier",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "npm-run-all build test"
+      "pre-push": "npm-run-all security-checks build test"
     }
   },
   "scripts": {
