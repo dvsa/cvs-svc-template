@@ -1,6 +1,6 @@
 {
   "name": "cvs-svc-template",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
   "engines": {
@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all audit lint prettier",
+      "pre-commit": "npm-run-all security-checks audit lint prettier",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "npm-run-all build test"
     }
@@ -25,7 +25,6 @@
     "test:integration:watch": "echo 'integration tests --watch to be added'",
     "test:integration:coverage": "cross-env COVERAGE=true echo 'integration tests coverage to be added'",
     "test": "npm-run-all lint test:unit:coverage test:integration:coverage",
-    "jest": "jest",
     "mock-server": "jsonsls run ./data/db.json",
     "audit": "npm audit",
     "lint:analyse": "eslint . --ext js,ts --fix",
@@ -74,6 +73,7 @@
     "cross-env": "7.0.3",
     "eslint": "7.17.0",
     "eslint-config-prettier": "7.1.0",
+    "eslint-plugin-jest": "24.3.2",
     "eslint-plugin-prettier": "3.3.1",
     "fork-ts-checker-webpack-plugin": "6.0.8",
     "husky": "4.3.7",

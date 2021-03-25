@@ -1,5 +1,5 @@
 {
-  "branches": ["master"],
+  "branches": ["develop"],
   "repositoryUrl": "https://github.com/dvsa/cvs-svc-template.git",
   "tagFormat": "${version}",
   "plugins": [
