@@ -55,6 +55,14 @@ The following scripts are available, for further information please refer to the
 
 Serverless-offline with webpack is used to run the project locally. Please use `npm run dev` script to do so. Go to `http://localhost:3001/local/version` to confirm that everything has loaded correctly, you should see that the version is the same as the version in the `package.json`
 
+The below routes are available as default routes from this scaffolding
+
+```
+(GET) http://localhost:3009/local-stage/version
+(GET) http://localhost:3009/local-stage/v1/template/
+(POST) http://localhost:3009/local-stage/v1/template/:id/something
+```
+
 ### Lambda locally
 
 Serverless can invoke lambda functions locally which provide a close experience to the real service if you decide not use the offline mode. `events` and `paths` can be found under `/local` folder.
@@ -91,7 +99,7 @@ To be added and customised depending on needs, supertest is used but we could be
 
 ### Release
 
-Releases (tag, release notes, changelog, github release, assets) are automatically managed by [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and when pushing (or merging) to `master` branch which is protected. [semver](https://semver.org/) convention is followed.
+Releases (tag, release notes, changelog, github release, assets) are automatically managed by [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and when pushing (or merging) to `develop` branch which is protected. [semver](https://semver.org/) convention is followed.
 
 Please be familiar with conventional commit as described in the Contributing section below.
 
