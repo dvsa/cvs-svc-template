@@ -49,7 +49,7 @@ The following scripts are available, for further information please refer to the
 - <b>dev</b>: `npm run dev` - _run in parallel the service and unit tests in_ `--watch` _mode with live reload_.
 - <b>test</b>: `npm t` - _execute the unit test suite_
 - <b>build</b>: `npm run build` - _bundle the project for production_
-- <b>production build</b>: `npm run build:production` - generate the project with bundled libraries, minified, concatenated code\_
+- <b>production build</b>: `npm run build:production` - _generate the project with bundled libraries, minified, concatenated code_
 
 ### Offline
 

@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all security-checks audit lint prettier",
+      "pre-commit": "npm-run-all security-checks audit prettier lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "npm-run-all build test"
     }
