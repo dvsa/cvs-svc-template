@@ -2,6 +2,7 @@ import { APIGatewayEvent, Context } from 'aws-lambda';
 import { handler } from '../../src';
 import * as Utils from '../../src/utils';
 import Version from '../../local/data/version.json';
+import Template from '../../local/data/template-something.json';
 
 describe('Application entry', () => {
   let event;
@@ -70,6 +71,28 @@ describe('Application entry', () => {
 
           expect(response.statusCode).toEqual(200);
           expect(parsedResponse.version).toBe(API_VERSION);
+        });
+      });
+
+      describe("on /v'x'/template endpoint(s)", () => {
+        it('should call the router endpoint', async () => {
+          event = {
+            ...Template,
+          };
+          const { statusCode, body } = await handler(event, context);
+          expect(statusCode).toEqual(200);
+          expect(body).not.toBe(undefined);
+          expect(body).toEqual('ok');
+        });
+
+        it("should get a '404' if the base path endpoint does not contain '/v'", async () => {
+          event = {
+            httpMethod: 'GET',
+            path: '/stage/template/1/something',
+          };
+
+          const response = await handler(event, context);
+          expect(response.statusCode).toEqual(404);
         });
       });
     });

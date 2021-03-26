@@ -6,42 +6,34 @@ const router = express.Router();
 
 const { API_VERSION } = process.env;
 
-// Declare middlewares
-/**
- * bodyParser, error handling, logger, etc..
- * http://expressjs.com/en/starter/basic-routing.html
- * http://expressjs.com/en/guide/using-middleware.html
- */
-
-/**
- * app level middlewares
- * app.use('/path', (req, res, next) => {
- * chain middlewares
- * next()
- * })
- */
-app.use((req, __, next) => {
-  // TODO Add logger lib like Winston or Morgan
-  console.log('path');
-  console.log(req.path);
-  next();
-});
-
 /**
  * Define routing and route level middleware if necessary from ./routes
+ * (GET) http://localhost:3009/<stage>/v1/template/
+ * (POST) http://localhost:3009/<stage>/v1/template/:id/something
  */
-router.post('/', (_, res, next) => {
-  res.send('Hello World!');
+router.get('/', (_, res, next) => {
+  res.send('ok');
   next();
 });
 
-// Debug router before we start proxying  requests from /v<x> psth
-app.get('/', (_, res) => {
-  res.send({ ok: true });
+router.post('/:id/something', (_, res, next) => {
+  res.send('ok');
+  next();
 });
 
+app.use('/template', router);
+
+/**
+ * Debug router before we start proxying  requests from /v<x> path
+ * http://localhost:3009/<stage>/version
+ */
 app.get('/version', (_, res) => {
   res.send({ version: API_VERSION });
+});
+
+// Serverless lambda invocation debug route - local/database/base-path.json
+app.get('/', (_, res) => {
+  res.send({ ok: true });
 });
 
 export { app };

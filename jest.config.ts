@@ -14,7 +14,7 @@ const config: Config.InitialOptions = {
     //TODO Add for integration
     '**/?(*.)+(spec|test).[tj]s?(x)',
   ],
-  collectCoverage: process.env.COVERAGE ? true : false,
+  collectCoverage: false,
   collectCoverageFrom: ['src/**/*.{js,ts}', '!**/node_modules/**'],
   //TODO Add for integration
   coverageDirectory: 'coverage/unit',
