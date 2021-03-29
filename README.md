@@ -59,8 +59,8 @@ The below routes are available as default routes from this scaffolding
 
 ```
 (GET) http://localhost:3009/local-stage/version
-(GET) http://localhost:3009/local-stage/v1/template/
-(POST) http://localhost:3009/local-stage/v1/template/:id/something
+(GET) http://localhost:3009/local-stage/*/service-name/
+(POST) http://localhost:3009/local-stage/*/service-name/:id/something
 ```
 
 ### Lambda locally

@@ -4,28 +4,30 @@ const app = express();
 
 const router = express.Router();
 
-const { API_VERSION } = process.env;
+const { API_VERSION, SERVICE } = process.env;
 
 /**
  * Define routing and route level middleware if necessary from ./routes
- * (GET) http://localhost:3009/<stage>/v1/template/
- * (POST) http://localhost:3009/<stage>/v1/template/:id/something
+ * (GET) http://localhost:3009/<stage>/                                  (configured on AWS)
+ *                                      <**>/<*>/template/               (configured/proxied from app)
+ * (POST) http://localhost:3009/<stage>/                                 (configured on AWS)
+ *                                      <**>/<*>/template/:id/something  (configured/proxied from app)
  */
 router.get('/', (_, res, next) => {
-  res.send('ok');
+  res.send('ok template route');
   next();
 });
 
 router.post('/:id/something', (_, res, next) => {
-  res.send('ok');
+  res.send('ok /id/something');
   next();
 });
 
-app.use('/template', router);
+// Defining template routes
+app.use(`/*/${SERVICE}/`, router);
 
 /**
- * Debug router before we start proxying  requests from /v<x> path
- * http://localhost:3009/<stage>/version
+ * Debug router before we start proxying
  */
 app.get('/version', (_, res) => {
   res.send({ version: API_VERSION });

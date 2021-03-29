@@ -2,7 +2,10 @@
 service: cvs-svc-template
 useDotenv: true
 
-# Create an optimized package for our functions
+# Create an optimized package for our Functions
+# This file has 2 purposes:
+# - used to mock API Gateway so that we can work locally (with serverless-offline)
+# - use webpack to bundle our code
 package:
   individually: true
   exclude:
@@ -35,6 +38,7 @@ provider:
   environment:
     SERVICE_VERSION: ${env:API_VERSION}
     AWS_PROVIDER_REGION: ${self:provider.region}
+    SERVICE: ${self:service}
 
 functions:
   # Use express routing so we don't rely on APIG and leverage express API
@@ -42,9 +46,7 @@ functions:
     handler: src/index.handler
     events:
       - http: ANY /
-      # We will proxy version from here in the client to match the API specs e.g. (<stage>)/v<x>/template
-      # We use basePath with version from serverless-http to mount the app locally and start proxying from it
-      # The version could be injected from here too
+      # We will proxy version from here in the client to match the API specs e.g. <stage>/**/*/<service>
       - http: 'ANY /{proxy+}'
   # Can also define specific functions on exposed routes using pattern matching, see below as example:
   # handler.ts containing exported getHello function is exposed on path /hello
