@@ -71,6 +71,7 @@ For further details using lambda locally please refer to the [serverless documen
 ### Debugging
 
 Existing configuration to debug the running service has been made available for vscode, please refer to `.vscode/launch.json` file. Serverless offline will be available on port `:4000`. 2 jest configurations are also provided which will allow to run a test or multiple tests.
+Should you wish to change the ports when debugging, please change the config args accordingly.
 
 For further information about debugging, please refer to the following documentation:
 

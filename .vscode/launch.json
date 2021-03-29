@@ -20,7 +20,8 @@
       "protocol": "inspector",
       "runtimeExecutable": "/usr/local/bin/node",
       "env": {
-        "NODE_ENV": "local"
+        "NODE_ENV": "local",
+        "API_VERSION": "1.0.0"
         // Here we set some environment vars that should be set locally.
         // They can and will overwrite the ones coming from your serverless.yml
         // Please refer to the relevant .env files - local, development, etc...
