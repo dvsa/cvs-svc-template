@@ -23,7 +23,7 @@ router.post('/:id/something', (_, res, next) => {
   next();
 });
 
-// Defining template routes
+// Defining template routes, anything before /cvs-svc-template is proxied
 app.use(`/*/${SERVICE}/`, router);
 
 /**

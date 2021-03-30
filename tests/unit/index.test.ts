@@ -8,14 +8,12 @@ describe('Application entry', () => {
   let event;
   let context;
   let majorVersionNumber: string;
-  let basePath: string;
 
   beforeEach(() => {
     event = {} as APIGatewayEvent;
     context = {} as Context;
     jest.spyOn(Utils, 'createMajorVersionNumber').mockReturnValue('1');
     majorVersionNumber = Utils.createMajorVersionNumber('1.0.0');
-    basePath = Utils.createHandlerBasePath(majorVersionNumber);
   });
 
   afterEach(() => {
@@ -60,7 +58,6 @@ describe('Application entry', () => {
         it("should call the service/lambda when the path contains '/version' and return the app version following the semver convention", async () => {
           event = {
             ...Version,
-            path: `stage/${basePath}/version`,
           };
 
           const response = await handler(event, context);
@@ -82,13 +79,13 @@ describe('Application entry', () => {
           const { statusCode, body } = await handler(event, context);
           expect(statusCode).toEqual(200);
           expect(body).not.toBe(undefined);
-          expect(body).toEqual('ok');
+          expect(body).toEqual('ok /id/something');
         });
 
-        it("should get a '404' if the base path endpoint does not contain '/v'", async () => {
+        it("should get a '404' if the base path endpoint does not contain the 'SERVICE'", async () => {
           event = {
-            httpMethod: 'GET',
-            path: '/stage/template/1/something',
+            httpMethod: 'POST',
+            path: '/stage/v1/wrong-service-name/1/something',
           };
 
           const response = await handler(event, context);
