@@ -3,6 +3,7 @@ import { handler } from '../../src';
 import * as Utils from '../../src/utils';
 import Version from '../../local/data/version.json';
 import Template from '../../local/data/template-something.json';
+import { SEMVER_REGEX } from '../../src/constants';
 
 describe('Application entry', () => {
   let event;
@@ -45,7 +46,7 @@ describe('Application entry', () => {
     describe('with proxy', () => {
       describe("on '<path>' or '<version>'", () => {
         it('should receive the version number from an environmental variable following semver convention', () => {
-          expect(process.env.API_VERSION).toMatch(/^(\d+\.)?(\d+\.)?(\*|\d+)$/);
+          expect(process.env.API_VERSION).toMatch(SEMVER_REGEX);
         });
 
         it('should have version number in the API shown as major', () => {
