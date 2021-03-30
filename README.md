@@ -4,8 +4,8 @@ The template for CVS lambda services
 
 ## Dependencies
 
-The project runs on node 12.x with typescript and serverless framework. For further details about project dependencies, please refer to the `package.json` file.
-[nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) is used to managed node versions and configuration explicitely done per project using an `.npmrc` file.
+The project runs on node 10.x with typescript and serverless framework. For further details about project dependencies, please refer to the `package.json` file.
+[nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) is used to managed node versions and configuration explicitly done per project using an `.npmrc` file.
 
 ## Running the project
 
@@ -49,10 +49,19 @@ The following scripts are available, for further information please refer to the
 - <b>dev</b>: `npm run dev` - _run in parallel the service and unit tests in_ `--watch` _mode with live reload_.
 - <b>test</b>: `npm t` - _execute the unit test suite_
 - <b>build</b>: `npm run build` - _bundle the project for production_
+- <b>production build</b>: `npm run build:production` - _generate the project with bundled libraries, minified, concatenated code_
 
 ### Offline
 
 Serverless-offline with webpack is used to run the project locally. Please use `npm run dev` script to do so. Go to `http://localhost:3001/local/version` to confirm that everything has loaded correctly, you should see that the version is the same as the version in the `package.json`
+
+The below routes are available as default routes from this scaffolding
+
+```
+(GET) http://localhost:3009/local-stage/version
+(GET) http://localhost:3009/local-stage/*/service-name/
+(POST) http://localhost:3009/local-stage/*/service-name/:id/something
+```
 
 ### Lambda locally
 
@@ -62,6 +71,7 @@ For further details using lambda locally please refer to the [serverless documen
 ### Debugging
 
 Existing configuration to debug the running service has been made available for vscode, please refer to `.vscode/launch.json` file. Serverless offline will be available on port `:4000`. 2 jest configurations are also provided which will allow to run a test or multiple tests.
+Should you wish to change the ports when debugging, please change the config args accordingly.
 
 For further information about debugging, please refer to the following documentation:
 
@@ -90,7 +100,7 @@ To be added and customised depending on needs, supertest is used but we could be
 
 ### Release
 
-Releases (tag, release notes, changelog, github release, assets) are automatically managed by [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and when pushing (or merging) to `master` branch which is protected. [semver](https://semver.org/) convention is followed.
+Releases (tag, release notes, changelog, github release, assets) are automatically managed by [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and when pushing (or merging) to `develop` branch which is protected. [semver](https://semver.org/) convention is followed.
 
 Please be familiar with conventional commit as described in the Contributing section below.
 

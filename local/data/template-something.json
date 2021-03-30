@@ -1,0 +1,4 @@
+{
+  "httpMethod": "POST",
+  "path": "/v1/whatever/cvs-svc-template/1/something"
+}

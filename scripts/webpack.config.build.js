@@ -2,6 +2,18 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const nodeExternals = require('webpack-node-externals');
 
+const { NODE_ENV, SERVICE, AWS_PROVIDER_REGION, AWS_PROVIDER_STAGE } = process.env;
+
+if (!SERVICE)
+  throw new Error(
+    `"SERVICE" environmental variable not provided.\n
+    Please provide it so your application can stop proxying requests and use a base path.`,
+  );
+
+console.log(
+  `\nBuilding Service:\n '${SERVICE}'\n mode: ${NODE_ENV}\n stage: '${AWS_PROVIDER_STAGE}'\n region: '${AWS_PROVIDER_REGION}'\n\n`,
+);
+
 module.exports = {
   context: path.resolve(__dirname, '..'),
   //TODO Reduce if multiple functions or multi bundle, outputs are required

@@ -2,19 +2,19 @@ import { APIGatewayEvent, Context } from 'aws-lambda';
 import { handler } from '../../src';
 import * as Utils from '../../src/utils';
 import Version from '../../local/data/version.json';
+import Template from '../../local/data/template-something.json';
+import { SEMVER_REGEX } from '../../src/constants';
 
 describe('Application entry', () => {
   let event;
   let context;
   let majorVersionNumber: string;
-  let basePath: string;
 
   beforeEach(() => {
     event = {} as APIGatewayEvent;
     context = {} as Context;
     jest.spyOn(Utils, 'createMajorVersionNumber').mockReturnValue('1');
     majorVersionNumber = Utils.createMajorVersionNumber('1.0.0');
-    basePath = Utils.createHandlerBasePath(majorVersionNumber);
   });
 
   afterEach(() => {
@@ -46,7 +46,7 @@ describe('Application entry', () => {
     describe('with proxy', () => {
       describe("on '<path>' or '<version>'", () => {
         it('should receive the version number from an environmental variable following semver convention', () => {
-          expect(process.env.API_VERSION).toMatch(/^(\d+\.)?(\d+\.)?(\*|\d+)$/);
+          expect(process.env.API_VERSION).toMatch(SEMVER_REGEX);
         });
 
         it('should have version number in the API shown as major', () => {
@@ -59,7 +59,6 @@ describe('Application entry', () => {
         it("should call the service/lambda when the path contains '/version' and return the app version following the semver convention", async () => {
           event = {
             ...Version,
-            path: `stage/${basePath}/version`,
           };
 
           const response = await handler(event, context);
@@ -70,6 +69,28 @@ describe('Application entry', () => {
 
           expect(response.statusCode).toEqual(200);
           expect(parsedResponse.version).toBe(API_VERSION);
+        });
+      });
+
+      describe("on /v'x'/template endpoint(s)", () => {
+        it('should call the router endpoint', async () => {
+          event = {
+            ...Template,
+          };
+          const { statusCode, body } = await handler(event, context);
+          expect(statusCode).toEqual(200);
+          expect(body).not.toBe(undefined);
+          expect(body).toEqual('ok /id/something');
+        });
+
+        it("should get a '404' if the base path endpoint does not contain the 'SERVICE'", async () => {
+          event = {
+            httpMethod: 'POST',
+            path: '/stage/v1/wrong-service-name/1/something',
+          };
+
+          const response = await handler(event, context);
+          expect(response.statusCode).toEqual(404);
         });
       });
     });

@@ -1,3 +1,4 @@
+import { SEMVER_REGEX } from '../../../src/constants';
 import { createMajorVersionNumber, createHandlerBasePath } from '../../../src/utils';
 
 describe("'Utils' file", () => {
@@ -13,9 +14,14 @@ describe("'Utils' file", () => {
 
   describe("'createMajorVersionNumber' function", () => {
     it('should return the major version when a version number following semver is passed', () => {
-      expect(SEMVER_VERSION_NUMBER).toMatch(/^(\d+\.)?(\d+\.)?(\*|\d+)$/);
+      expect(SEMVER_VERSION_NUMBER).toMatch(SEMVER_REGEX);
       expect(expectedVersionNumber).toBe('1');
       expect(expectedVersionNumber).not.toBe('1.0.0');
+    });
+
+    it('should throw an error if a number is not passed in', () => {
+      expect(() => createMajorVersionNumber('1.0.0')).not.toThrowError();
+      expect(() => createMajorVersionNumber('')).toThrowError();
     });
   });
 
