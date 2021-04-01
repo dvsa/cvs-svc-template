@@ -40,11 +40,12 @@
     "sonar-scanner": "sonar-scanner",
     "package:create": "cross-env SERVICE=${npm_package_name} NODE_ENV=local sls package --package .build",
     "package:prepare": "mv ./.build/app.zip ./.build/build.zip",
-    "package:move": "mv ./.build/build.zip ./build.zip",
+    "package:move": "mv ./.build/build.zip ./${ZIP_NAME}.zip",
     "package": "npm-run-all clean package:*",
     "release": "semantic-release",
     "prerelease": "semantic-release --dry-run",
-    "dependencies:check": "ncu"
+    "dependencies:check": "ncu",
+    "tools-setup": "echo 'nothing to do for now'"
   },
   "dependencies": {
     "aws-lambda": "1.0.6",

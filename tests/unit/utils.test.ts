@@ -1,5 +1,5 @@
-import { SEMVER_REGEX } from '../../../src/constants';
-import { createMajorVersionNumber, createHandlerBasePath } from '../../../src/utils';
+import { SEMVER_REGEX } from '../../src/constants';
+import { createMajorVersionNumber, createHandlerBasePath } from '../../src/utils';
 
 describe("'Utils' file", () => {
   let SEMVER_VERSION_NUMBER;

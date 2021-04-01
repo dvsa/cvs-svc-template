@@ -13,6 +13,8 @@ Once the dependencies are installed, you will be required to rename the `/config
 
 The application runs on port `:3001` by default when no stage is provided.
 
+To get started, please change the `name` field of the package.json and `service` field of your service to get your router defined (with `SERVICE` env variable).
+
 ### Environments
 
 We use `NODE_ENV` environment variable to set multi-stage builds (region, stages) with the help of dotenv through npm scripts to load the relevant `.env.<NODE_ENV>` file from `./config` folder into the `serverless.yml` file as we don't rely on serverless for deployment.

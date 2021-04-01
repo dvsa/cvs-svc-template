@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import { app } from '../../../../src/infrastructure/api';
+import { app } from '../../src/infrastructure/api';
 
 // TODO Define Mock strategy
 describe('API', () => {
