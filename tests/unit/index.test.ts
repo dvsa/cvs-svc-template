@@ -37,7 +37,6 @@ describe('Application entry', () => {
 
           const response = await handler(event, context);
           const parsedBody = JSON.parse(response.body) as { ok: boolean };
-
           expect(parsedBody.ok).toBe(true);
         });
       });

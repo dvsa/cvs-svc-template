@@ -4,7 +4,7 @@ const app = express();
 
 const router = express.Router();
 
-const { API_VERSION, SERVICE } = process.env;
+const { API_VERSION } = process.env;
 
 /**
  * Define routing and route level middleware if necessary from ./routes
@@ -23,8 +23,8 @@ router.post('/:id/something', (_, res, next) => {
   next();
 });
 
-// Defining template routes, anything before /cvs-svc-template is proxied
-app.use(`/*/${SERVICE}/`, router);
+// Defining template routes, anything before /template is proxied
+app.use('/*/template/', router);
 
 /**
  * Debug router before we start proxying

@@ -13,7 +13,10 @@ Once the dependencies are installed, you will be required to rename the `/config
 
 The application runs on port `:3001` by default when no stage is provided.
 
-To get started, please change the `name` field of the package.json and `service` field of your service to get your router defined (with `SERVICE` env variable).
+To get started, please change the meta data of your `package.json` and `serverless.yml` file accordingly as well as base api route for your express router.
+The router is currently being mounted in the following file `src/infrastructure/api/index.ts`.
+
+The service has local environmental variables (please see `env` placeholder file) set locally however should we wish to further extend the service, the environmental variables will need to be ported over to the CI/CD pipeline which currently uses `BRANCH` and `BUCKET`.
 
 ### Environments
 
