@@ -10,6 +10,7 @@ The project runs on node 10.x with typescript and serverless framework. For furt
 ## Running the project
 
 Once the dependencies are installed, you will be required to rename the `/config/env.example` file to `.env.local` as we use dotenv files for configuration for local local development for example. Further information about [variables](https://www.serverless.com/framework/docs/providers/aws/guide/variables/) and [environment variables](https://www.serverless.com/framework/docs/environment-variables/) with serverless.
+Please note that multiple `.env` files can be created per environments. Our current development environment is 'local'.
 
 The application runs on port `:3001` by default when no stage is provided.
 

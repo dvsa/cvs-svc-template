@@ -15,6 +15,7 @@ package:
     - src/handler.ts
 
 plugins:
+  # .dotenv is not currently supported so we use this serverless plugin for env configuration
   - serverless-dotenv-plugin
   # https://github.com/serverless-heaven/serverless-webpack/tree/master/examples
   - serverless-webpack
