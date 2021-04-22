@@ -13,6 +13,7 @@ module.exports = {
     ],
     'subject-case': [1, 'always', 'lower-case'],
     // disable it to allow release notes from semantic-release to happen when releasing
+    'footer-max-line-length': [0],
     'body-max-line-length': [0],
     // level: disabled to use our own rule with commitlint-plugin-function-rules plugin
     'scope-case': [0],
@@ -23,7 +24,10 @@ module.exports = {
         const ticketNumberFormat = /^cvsb-\d+$/;
         // type(scope?): subject
         // we want to ticket number to appear in the commit msg as well as scope when we release
-        if (parsed && ((parsed.scope && parsed.scope.match(ticketNumberFormat) !== null) || parsed.scope === 'release')) {
+        if (
+          parsed &&
+          ((parsed.scope && parsed.scope.match(ticketNumberFormat) !== null) || parsed.scope === 'release')
+        ) {
           return [true];
         } else {
           return [
