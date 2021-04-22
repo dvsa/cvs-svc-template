@@ -43,7 +43,7 @@
     "package:move": "mv ./.build/build.zip ./${ZIP_NAME}.zip",
     "package": "npm-run-all clean package:*",
     "release": "semantic-release",
-    "prerelease": "semantic-release --dry-run",
+    "pre-release": "semantic-release --dry-run",
     "dependencies:check": "ncu",
     "tools-setup": "echo 'nothing to do for now'"
   },
