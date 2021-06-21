@@ -13,6 +13,8 @@ module.exports = {
     ],
     'subject-case': [1, 'always', 'lower-case'],
     // disable it to allow release notes from semantic-release to happen when releasing
+    // disable it to allow release notes from semantic-release to happen when releasing
+    // disable it to allow release notes from semantic-release to happen when releasing
     'footer-max-line-length': [0],
     'body-max-line-length': [0],
     // level: disabled to use our own rule with commitlint-plugin-function-rules plugin
