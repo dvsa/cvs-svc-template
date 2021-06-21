@@ -26,6 +26,8 @@ module.exports = {
         const ticketNumberFormat = /^cvsb-\d+$/;
         // type(scope?): subject
         // we want to ticket number to appear in the commit msg as well as scope when we release
+        // we want to ticket number to appear in the commit msg as well as scope when we release
+        // we want to ticket number to appear in the commit msg as well as scope when we release
         if (
           parsed &&
           ((parsed.scope && parsed.scope.match(ticketNumberFormat) !== null) || parsed.scope === 'release')
