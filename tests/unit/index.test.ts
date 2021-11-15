@@ -6,8 +6,8 @@ import Template from '../../local/data/template-something.json';
 import { SEMVER_REGEX } from '../../src/constants';
 
 describe('Application entry', () => {
-  let event;
-  let context;
+  let event: APIGatewayEvent;
+  let context: Context;
   let majorVersionNumber: string;
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('Application entry', () => {
 
   describe('Handler', () => {
     it('should call the express wrapper', async () => {
-      event = { body: 'Test Body' };
+      event = { body: 'Test Body' } as APIGatewayEvent;
 
       const response = await handler(event, context);
       expect(response.statusCode).toEqual(200);
@@ -33,7 +33,7 @@ describe('Application entry', () => {
     describe('when the service is running', () => {
       describe('without proxy', () => {
         it("should return a body response when the handler has event with the '/' as path", async () => {
-          event = { httpMethod: 'GET', path: '/' };
+          event = { httpMethod: 'GET', path: '/' } as APIGatewayEvent;
 
           const response = await handler(event, context);
           const parsedBody = JSON.parse(response.body) as { ok: boolean };
@@ -58,7 +58,7 @@ describe('Application entry', () => {
         it("should call the service/lambda when the path contains '/version' and return the app version following the semver convention", async () => {
           event = {
             ...Version,
-          };
+          } as APIGatewayEvent;
 
           const response = await handler(event, context);
           const parsedResponse = JSON.parse(response.body) as { version: string };
@@ -75,7 +75,7 @@ describe('Application entry', () => {
         it('should call the router endpoint', async () => {
           event = {
             ...Template,
-          };
+          } as APIGatewayEvent;
           const { statusCode, body } = await handler(event, context);
           expect(statusCode).toEqual(200);
           expect(body).not.toBe(undefined);
@@ -86,7 +86,7 @@ describe('Application entry', () => {
           event = {
             httpMethod: 'POST',
             path: '/stage/v1/wrong-service-name/1/something',
-          };
+          } as APIGatewayEvent;
 
           const response = await handler(event, context);
           expect(response.statusCode).toEqual(404);

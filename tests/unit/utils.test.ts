@@ -2,9 +2,9 @@ import { SEMVER_REGEX } from '../../src/constants';
 import { createMajorVersionNumber, createHandlerBasePath } from '../../src/utils';
 
 describe("'Utils' file", () => {
-  let SEMVER_VERSION_NUMBER;
-  let expectedVersionNumber;
-  let expectedBasePath;
+  let SEMVER_VERSION_NUMBER: string;
+  let expectedVersionNumber: string;
+  let expectedBasePath: string;
 
   beforeEach(() => {
     SEMVER_VERSION_NUMBER = '1.0.0';
