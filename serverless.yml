@@ -26,7 +26,7 @@ plugins:
 provider:
   profile: ${env:AWS_PROVIDER_PROFILE, 'default'}
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   apiGateway:
     # https://www.serverless.com/framework/docs/deprecations/#LOAD_VARIABLES_FROM_ENV_FILES
     shouldStartNameWithService: true
