@@ -4,27 +4,15 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Serverless Offline",
-      "program": "${workspaceRoot}/node_modules/serverless/bin/serverless.js",
+      "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
       "args": [
-        "offline",
-        "start",
-        "--noPrependStageInUrl",
-        "--noTimeout",
-        "--dontPrintOutput",
-        "--httpPort=4000",
-        "--lambdaPort=4001"
+          "offline",
+          "start"
       ],
-      "sourceMaps": true,
-      "runtimeArgs": ["--lazy"],
-      "outFiles": ["${workspaceFolder}/.webpack/**/*.js"],
-      "protocol": "inspector",
-      "runtimeExecutable": "/usr/local/bin/node",
       "env": {
         "NODE_ENV": "local",
-        "SERVICE": "cvs-svc-template"
-        // Here we set some environment vars that should be set locally.
-        // They can and will overwrite the ones coming from your serverless.yml
-        // Please refer to the relevant .env files - local, development, etc...
+        "SERVICE": "cvs-tsk-atf-daily-schedules",
+        "API_VERSION": "1.0.0"
       },
       "windows": {
         "program": "${workspaceRoot}\\node_modules\\serverless\\bin\\serverless"
