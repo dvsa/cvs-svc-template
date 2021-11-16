@@ -41,3 +41,6 @@ reports
 
 # Source maps
 *.map
+
+# npm audit results
+npm-audit.html
